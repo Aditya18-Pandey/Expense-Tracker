@@ -136,3 +136,36 @@ h3 {
 #total {
     font-weight: 600;
 }
+
+
+
+
+@media (max-width: 600px) {
+
+    /* FORM: switch to single column */
+    #expense-form {
+        grid-template-columns: 1fr;
+    }
+
+    #expense-form button {
+        grid-column: span 1;
+    }
+
+    /* EXPENSE ITEM: stack vertically */
+    .expense-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* DELETE BUTTON: easier tap */
+    .delete-btn {
+        align-self: flex-end;
+        font-size: 1rem;
+    }
+
+    /* TOTAL ALIGNMENT */
+    h3 {
+        text-align: left;
+    }
+}
