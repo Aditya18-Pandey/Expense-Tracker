@@ -62,21 +62,31 @@ form.addEventListener("submit", function(e){
     const category = categoryInput.value;
     const date = dateInput.value;
 
+    //for checking if there's any empty field
     if(!title|| amount <=0 || isNaN(amount)) return;
     addExpense(title, amount, category, date);
     form.reset();
     renderExpense();
 })
 
+//formatting date
+function formatDate(dateStr) {
+    return new Date(dateStr).toLocaleDateString();
+}
 function renderExpense(){
     expenseList.innerHTML = "";
 
     expenses.forEach(expense =>{
         const li = document.createElement("li");
+        li.classList.add("expense-item");
+        
         li.innerHTML = `
-                <span>${expense.title} - ₹${expense.amount} (${expense.category})</span>
-                <button data-id = "${expense.id}">Delete</button>
-                `
+            <div class ="expense-info">
+            <span>${expense.title} - ₹${expense.amount} </span>
+            <small>${expense.category} • ${formatDate(expense.date)}</small>
+            </div>
+            <button class="delete-btn" data-id = "${expense.id}">Delete</button>
+        `;
         expenseList.appendChild(li);
     })
     renderTotal();
