@@ -160,7 +160,7 @@ h3 {
 
     /* DELETE BUTTON: easier tap */
     .delete-btn {
-        align-self: flex-end;
+        align-items:flex-start;
         font-size: 1rem;
     }
 
